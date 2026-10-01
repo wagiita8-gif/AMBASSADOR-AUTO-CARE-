@@ -1,0 +1,136 @@
+<!--Created By Pirate-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Ambassadors System
+    </title>
+    <link rel="stylesheet" href="./css/style.css">
+  
+  </head>
+  <body>
+    <button 
+      class="back-button"
+      id="goBack"
+      onclick="goBack()"
+      >Back</button>
+    <button
+      id="themeToggle"
+      class="toggle-btn"
+      aria-label="Toggle Dark Mode">
+      <span class="icon sun">☀️</span>
+      <span class="icon moon">🌙</span>
+      </button>
+    <form id="login" onsubmit="return false;">
+      <h2>AMBASSADORS<br>Account Login</h2>
+            <div class="login-card">
+              
+                <label>Email</label><br>
+                <input type="email" id="email" placeholder="Enter your Email" required>
+                <br><br>
+                <label>Password</label><br>
+                <input type="password" id="password" placeholder="Enter your Password" required>
+                <br><br>
+                <button type="button" onclick="login()" >LOGIN</button>
+
+
+            </div>
+
+        </form>
+
+        <div id="home" style="display:none;">
+            <h1 id="homePage">AMBASSADORS AUTO CARE SYSTEM</h1>
+            <ul>
+                <li>Tyres</li>
+                <li>leaf springs</li>
+                <li>Seat covers</li>
+                <li>Car mart</li>
+                <li>Accesories</li>
+
+            </ul>
+        </div>
+        <div id="salesForm" style="display:none;">
+            <label>
+           <b>Products:</b>
+            
+            <textarea id="product"></textarea></label><br>
+          <label><i>Quantity Sóld:</i>
+          <input id="qty" type="number"></label><br><br>
+            <label>
+                <b>Selling Price:</b>
+            
+            <input id="sell" type="number"></label><br><br>
+            <label>
+                <b>Buying Price:</b>
+            
+            <input id="buy"
+            type="number"></label><br><br>
+            <label>
+                <b>Profit:</b>
+          <input
+            id="profit"
+            type="number" readonly></label><br>
+
+            <button onclick="calcProfit()">Find Profit</button>
+          <button onclick="saveToTable()">
+            Save To Table
+          </button>
+        </div>
+      <div id="Tables" style="display:none;">
+
+        <table id="salesTable">
+        <tr>
+          <th>
+            Date
+          </th>
+         <th>QTY</th> 
+          <th>Sales</th>
+          <th>Selling price</th>
+          <th>Buying price</th>
+          <th>Profit</th>
+          <th>Quantity rem</th>
+        </tr>
+          
+      </table>
+        <p>GrossProfit:<span id="totalDisplay">0</span></p>
+        <p>TotalCharges:<span id="ChargesDisplay">0</span></p>
+        <p>NetProfit:<span id="netProfit">0</span></p>
+      </div>
+      <nav class="navbar" id="navBar" style="display:none;">
+                <span class="nav-items" onclick="showHome()">
+                    🏚Home
+                </span>
+                <span
+                class="nav-items" onclick="showSales()">📊SALES</span>
+                <span
+                class="nav-items"
+                onclick="showTables()">🎞TABLES</span>
+                <span class="nav-items"
+                onclick="showCharges()">$CHARGES</span>
+            </nav>
+            
+        <div id="Charges" style="display:none;">
+          <label>
+            Wifi:
+        <input id="wifi" type="number">
+          </label>
+          <label>
+            Airtime:
+            <input id="airtime" type="number">
+          </label>
+          <label>Rent:<input id="rent" type="number"></label>
+          <label>E-Bill:<input id="bill" type="number"></label>
+          <label>Parcel:<input id="parcel" type="number"></label>
+          <label>Bike:<input id="bike" type="number"></label>
+          <label>Others:<input id="others" type="number"></label>
+          <label>Total Charges:</label><input id="totalCharges" type="number" readonly>
+
+          
+          <button onclick="findCharges()">Find Charges</button>
+          <button onclick="saveToCharges()">Save Charges</button>
+        </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
