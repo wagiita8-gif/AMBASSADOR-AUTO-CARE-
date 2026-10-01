@@ -14,7 +14,7 @@ function goBack(){
         document.getElementById("Charges").style.display="none";
         document.getElementById("Tables").style.display="none";
 }
-localStorage.setItem("email","owner@gmail.com");
+localStorage.setItem("email","pirate@gmail.com");
 localStorage.setItem("password","P^P^P^g234");
         function login(){
             let email=document.getElementById("email").value;
@@ -78,6 +78,25 @@ localStorage.setItem("password","P^P^P^g234");
         document.getElementById("profit").value=prof;
         }
       let totalProfit=0;
+      let sales= JSON.parse(localStorage.getItem("sales")) || [];
+
+     function addRow(s){
+       let row=document.getElementById("salesTable").insertRow();
+       row.innerHTML=`
+       <td>${s.date}</td>
+       <td>${s.qty}</td>
+       <td>${s.product}</td>
+       <td>${s.sell}</td>
+       <td>${s.buy}</td>
+       <td>${s.profit}</td> `;
+     }
+       function updateTotal(){
+         totalProfit=sales.reduce((sum,s)=> sum+Number(s.profit),0);
+         document.getElementById("totalDisplay").innerText=totalProfit;
+       }
+       sales.forEach(addRow);
+       updateTotal();
+     
       function saveToTable(){
         let product=document.getElementById("product").value;
       let sell= document.getElementById("sell").value;
@@ -118,21 +137,14 @@ localStorage.setItem("password","P^P^P^g234");
         document.getElementById("profit").value="";
         document.getElementById("qty").value="";
 
-        totalProfit=totalProfit+Number(profit)
-        document.getElementById("totalDisplay").innerText=totalProfit
-
-        let table=document.getElementById("salesTable");
-        let row=table.insertRow();
-
-        row.innerHTML=`
-        
-          <td>${new Date().toLocaleDateString()}</td>
-          <td>${qty}</td>
-        <td>${product}</td>
-          <td>${sell}</td>
-          <td>${buy}</td>
-          <td>${profit}</td>`;
-          
+        let sale={
+          date: new Date().toLocaleDateString(),
+             qty,product,sell,buy,profit
+      };
+       sales.push(sale);
+       localStorage.setItem("sales", JSON.stringify(sales));
+       addRow(sale);
+       updateTotal();
 
 
        
