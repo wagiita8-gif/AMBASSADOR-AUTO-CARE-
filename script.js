@@ -151,16 +151,23 @@ localStorage.setItem("password","P^P^P^g234");
         document.getElementById("salesForm").style.display="none";
         document.getElementById("Tables").style.display="block";
           }
-    
+
+          let wifi;
+          let airtime;
+          let rent;
+         let bill;
+         let parcel;
+         let bike;
+        let others;
         function findCharges(){
-          let wifi=(document.getElementById("wifi").value);
+         wifi=(document.getElementById("wifi").value);
           
-          let airtime=(document.getElementById("airtime").value);
-          let rent=(document.getElementById("rent").value);
-          let bill=(document.getElementById("bill").value);
-          let parcel=(document.getElementById("parcel").value);
-          let bike=(document.getElementById("bike").value);
-          let others=(document.getElementById("others").value);
+          airtime=(document.getElementById("airtime").value);
+           rent=(document.getElementById("rent").value);
+          bill=(document.getElementById("bill").value);
+         parcel=(document.getElementById("parcel").value);
+         bike=(document.getElementById("bike").value);
+          others=(document.getElementById("others").value);
 
 
           let charges=Number(wifi)+Number(airtime)+Number(rent)+Number(bill)+Number(parcel)+Number(bike)+Number(others);
@@ -187,6 +194,10 @@ localStorage.setItem("password","P^P^P^g234");
           document.getElementById("ChargesDisplay").innerText=totalCharges
           document.getElementById("netProfit").innerText=NetProfit
           document.getElementById("totalCharges").value="";
+
+          let charges = {wifi, airtime, rent, bill, parcel, bike, others};
+
+localStorage.setItem("charges", JSON.stringify(charges));
 
         }
         
